@@ -17,24 +17,24 @@ public class PsychohelpApiApplication {
         SpringApplication.run(PsychohelpApiApplication.class, args);
     }
 
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/api/v1/**").allowedOrigins("https://psychohelp-91442.web.app");
-//            }
-//        };
-//    }
-
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:8080").allowedMethods("*").allowedHeaders("*");
+                registry.addMapping("/api/v1/**").allowedOrigins("https://psychohelp.azurewebsites.net").allowedMethods("*").allowedHeaders("*");
             }
         };
     }
+
+  //  @Bean
+    //public WebMvcConfigurer corsConfigurer() {
+      //  return new WebMvcConfigurer() {
+        //    @Override
+          //  public void addCorsMappings(CorsRegistry registry) {
+            //    registry.addMapping("/**").allowedOrigins("http://localhost:8080").allowedMethods("*").allowedHeaders("*");
+            //}
+       // };
+    //}
 
 }
