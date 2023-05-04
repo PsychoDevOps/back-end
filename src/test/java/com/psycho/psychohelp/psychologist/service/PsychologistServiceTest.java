@@ -11,7 +11,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -53,6 +55,35 @@ public class PsychologistServiceTest {
   Assertions.assertEquals(espero.getEmail(),recibo.getEmail());
 
   Mockito.verify(psychologistRepository,Mockito.times(1)).findByEmail(Mockito.anyString());
+
+ }
+
+ @Test
+ @DisplayName("test buscar psicologo por genero")
+ public void testBuscarPorGenero(){
+  ArrayList<Psychologist> espero = new ArrayList<>();
+  espero.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+          "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
+
+  espero.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+          "984568278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
+
+  List<Psychologist> psychologists = new ArrayList<>();
+  psychologists.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+          "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
+
+  psychologists.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+          "984568278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
+
+
+  Mockito.when(psychologistRepository.findByGenre("masculino"))
+          .thenReturn(psychologists);
+
+
+  List<Psychologist> recibo = psychologistService.getByGenre("masculino");
+  Assertions.assertEquals(espero.get(0).getGenre(),recibo.get(0).getGenre());
+  Assertions.assertEquals(espero.get(1).getGenre(),recibo.get(1).getGenre());
+  Mockito.verify(psychologistRepository,Mockito.times(1)).findByGenre(Mockito.anyString());
 
  }
 
