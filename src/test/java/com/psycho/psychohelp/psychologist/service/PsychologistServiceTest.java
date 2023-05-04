@@ -39,6 +39,25 @@ public class PsychologistServiceTest {
 
     }
 
+ @Test
+ @DisplayName("test buscar psicologo por email")
+ public void testBuscarPorEmail(){
+  Psychologist espero = new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+          "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true);
+
+  Mockito.when(psychologistRepository.findByEmail(Mockito.anyString()))
+          .thenReturn(new Psychologist(1L, "Jorge", "12345", "1980/12/05", "jorgel@mail.com", "password",
+                  "984561278", "especializacion", "formacion", "about", "masculino", "sesiontype", "img.jpg", "cmp", true, true));
+
+  Psychologist recibo =psychologistService.getByEmail("jorgel@mail.com");
+  Assertions.assertEquals(espero.getEmail(),recibo.getEmail());
+
+  Mockito.verify(psychologistRepository,Mockito.times(1)).findByEmail(Mockito.anyString());
+
+ }
+
+
+
 
 
 }
