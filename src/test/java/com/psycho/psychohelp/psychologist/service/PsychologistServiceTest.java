@@ -167,7 +167,7 @@ public class PsychologistServiceTest {
  }
 
  @Test
- @DisplayName("test buscar psicologo por genero")
+ @DisplayName("test obtener todos los psicólogos")
  public void testBuscarTodos(){
   ArrayList<Psychologist> espero = new ArrayList<>();
   espero.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
