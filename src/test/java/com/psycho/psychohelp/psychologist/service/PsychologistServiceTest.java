@@ -166,6 +166,41 @@ public class PsychologistServiceTest {
 
  }
 
+ @Test
+ @DisplayName("test buscar psicologo por genero")
+ public void testBuscarTodos(){
+  ArrayList<Psychologist> espero = new ArrayList<>();
+  espero.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+          "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
+
+  espero.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+          "984568278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
+
+  List<Psychologist> psychologists = new ArrayList<>();
+  psychologists.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+          "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
+
+  psychologists.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+          "984568278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
+
+
+  Mockito.when(psychologistRepository.findAll())
+          .thenReturn(psychologists);
+
+
+  List<Psychologist> recibo = psychologistService.getAll();
+  Assertions.assertEquals(espero.get(0).getId(),recibo.get(0).getId());
+  Assertions.assertEquals(espero.get(1).getId(),recibo.get(1).getId());
+  Assertions.assertEquals(espero.get(0).getName(),recibo.get(0).getName());
+  Assertions.assertEquals(espero.get(1).getName(),recibo.get(1).getName());
+  Assertions.assertEquals(espero.get(0).getGenre(),recibo.get(0).getGenre());
+  Assertions.assertEquals(espero.get(1).getGenre(),recibo.get(1).getGenre());
+  Assertions.assertEquals(espero.get(0).getSessionType(),recibo.get(0).getSessionType());
+  Assertions.assertEquals(espero.get(1).getSessionType(),recibo.get(1).getSessionType());
+  Mockito.verify(psychologistRepository,Mockito.times(1)).findAll();
+
+ }
+
 
 
 
