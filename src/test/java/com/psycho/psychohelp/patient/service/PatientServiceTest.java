@@ -1,4 +1,4 @@
-package com.psycho.psychohelp.test.service;
+package com.psycho.psychohelp.patient.service;
 
 import com.psycho.psychohelp.patient.domain.model.entity.Patient;
 import com.psycho.psychohelp.patient.domain.persistence.PatientRepository;

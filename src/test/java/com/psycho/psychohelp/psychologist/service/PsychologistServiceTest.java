@@ -27,11 +27,11 @@ public class PsychologistServiceTest {
     @Test
     @DisplayName("test buscar por id")
     public void testBuscarPorID(){
-     Psychologist espero = new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+     Psychologist espero = new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
              "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true);
 
      Mockito.when(psychologistRepository.findById(Mockito.anyLong()))
-             .thenReturn(Optional.of(new Psychologist(1L, "Jorge", "12345", "1980/12/05", "jorgel@mail.com", "password",
+             .thenReturn(Optional.of(new Psychologist(1L, "Jorge", "12345", new Date(12/05/1980), "jorgel@mail.com", "password",
                      "984561278", "especializacion", "formacion", "about", "masculino", "sesiontype", "img.jpg", "cmp", true, true)));
 
      Psychologist recibo =psychologistService.getById(1L);
@@ -44,11 +44,11 @@ public class PsychologistServiceTest {
  @Test
  @DisplayName("test buscar psicologo por email")
  public void testBuscarPorEmail(){
-  Psychologist espero = new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  Psychologist espero = new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true);
 
   Mockito.when(psychologistRepository.findByEmail(Mockito.anyString()))
-          .thenReturn(new Psychologist(1L, "Jorge", "12345", "1980/12/05", "jorgel@mail.com", "password",
+          .thenReturn(new Psychologist(1L, "Jorge", "12345", new Date(12/05/1980), "jorgel@mail.com", "password",
                   "984561278", "especializacion", "formacion", "about", "masculino", "sesiontype", "img.jpg", "cmp", true, true));
 
   Psychologist recibo =psychologistService.getByEmail("jorgel@mail.com");
@@ -62,17 +62,17 @@ public class PsychologistServiceTest {
  @DisplayName("test buscar psicologo por genero")
  public void testBuscarPorGenero(){
   ArrayList<Psychologist> espero = new ArrayList<>();
-  espero.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  espero.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
-  espero.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+  espero.add(new Psychologist(2L, "Jorgito",  "123456", new Date(12/05/1980),"jorgitol@mail.com","password",
           "984568278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
   List<Psychologist> psychologists = new ArrayList<>();
-  psychologists.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  psychologists.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
-  psychologists.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+  psychologists.add(new Psychologist(2L, "Jorgito",  "123456", new Date(12/05/1980),"jorgitol@mail.com","password",
           "984568278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
 
@@ -92,17 +92,17 @@ public class PsychologistServiceTest {
  @DisplayName("test buscar psicologo por tipo de sesion")
  public void testBuscarPorTipoSesion(){
   ArrayList<Psychologist> espero = new ArrayList<>();
-  espero.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  espero.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
-  espero.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+  espero.add(new Psychologist(2L, "Jorgito",  "123456", new Date(12/05/1980),"jorgitol@mail.com","password",
           "984568278","especializacion","formacion","about", "masculino","sesiontype1", "img.jpg","cmp",true,true));
 
   List<Psychologist> psychologists = new ArrayList<>();
-  psychologists.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  psychologists.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
-  psychologists.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+  psychologists.add(new Psychologist(2L, "Jorgito",  "123456", new Date(12/05/1980),"jorgitol@mail.com","password",
           "984568278","especializacion","formacion","about", "masculino","sesiontype1", "img.jpg","cmp",true,true));
 
 
@@ -121,17 +121,17 @@ public class PsychologistServiceTest {
  @DisplayName("test buscar psicologo por genero y tipo de sesion")
  public void testBuscarPorGeneroYTipoDeSesion(){
   ArrayList<Psychologist> espero = new ArrayList<>();
-  espero.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  espero.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
-  espero.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+  espero.add(new Psychologist(2L, "Jorgito",  "123456", new Date(12/05/1980),"jorgitol@mail.com","password",
           "984568278","especializacion","formacion","about", "masculino","sesiontype1", "img.jpg","cmp",true,true));
 
   List<Psychologist> psychologists = new ArrayList<>();
-  psychologists.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  psychologists.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
-  psychologists.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+  psychologists.add(new Psychologist(2L, "Jorgito",  "123456", new Date(12/05/1980),"jorgitol@mail.com","password",
           "984568278","especializacion","formacion","about", "masculino","sesiontype1", "img.jpg","cmp",true,true));
 
 
@@ -152,11 +152,11 @@ public class PsychologistServiceTest {
  @Test
  @DisplayName("test buscar psicologo por nombre")
  public void testBuscarPorNombre(){
-  Psychologist espero = new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  Psychologist espero = new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true);
 
   Mockito.when(psychologistRepository.findByName(Mockito.anyString()))
-          .thenReturn(new Psychologist(1L, "Jorge", "12345", "1980/12/05", "jorgel@mail.com", "password",
+          .thenReturn(new Psychologist(1L, "Jorge", "12345", new Date(12/05/1980), "jorgel@mail.com", "password",
                   "984561278", "especializacion", "formacion", "about", "masculino", "sesiontype", "img.jpg", "cmp", true, true));
 
   Psychologist recibo =psychologistService.getByName("Jorge");
@@ -170,17 +170,17 @@ public class PsychologistServiceTest {
  @DisplayName("test buscar psicologo por genero")
  public void testBuscarTodos(){
   ArrayList<Psychologist> espero = new ArrayList<>();
-  espero.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  espero.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
-  espero.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+  espero.add(new Psychologist(2L, "Jorgito",  "123456", new Date(12/05/1980),"jorgitol@mail.com","password",
           "984568278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
   List<Psychologist> psychologists = new ArrayList<>();
-  psychologists.add(new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password",
+  psychologists.add(new Psychologist(1L, "Jorge",  "12345", new Date(12/05/1980),"jorgel@mail.com","password",
           "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
-  psychologists.add(new Psychologist(2L, "Jorgito",  "123456","1980/12/05","jorgitol@mail.com","password",
+  psychologists.add(new Psychologist(2L, "Jorgito",  "123456", new Date(12/05/1980),"jorgitol@mail.com","password",
           "984568278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true));
 
 
