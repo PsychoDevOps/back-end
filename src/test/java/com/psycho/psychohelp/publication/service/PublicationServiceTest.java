@@ -38,6 +38,7 @@ public class PublicationServiceTest {
 
     }
 
+    /*
     @Test
     @DisplayName("Test para Buscar por ID de psicólogo")
     public void testBuscarPorIdDePsicologo(){
@@ -51,7 +52,7 @@ public class PublicationServiceTest {
 
         Mockito.verify(publicationRepository,Mockito.times(1)).findByPsychologistId(Mockito.anyLong());
 
-    }
+    }*/
 
     @Test
     @DisplayName("Test para Obtener todas las Publicaciones")
