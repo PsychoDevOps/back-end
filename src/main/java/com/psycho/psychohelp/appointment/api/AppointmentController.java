@@ -50,7 +50,8 @@ public class AppointmentController {
         return mapper.toResource(appointmentService.getById(appointmentId));
     }
 
-    @Operation(summary = "Get all appointments by patientId", description = "Get all appointments by patientId")
+    @Operation(summary = "Get all appointments by patientId",
+            description = "Get all appointments by patientId")
     @GetMapping("/patient/{patientId}")
     public List<AppointmentResource> getAllAppointmentsByPatientId(@PathVariable Long patientId) {
         return mapper.toResource(appointmentService.getByPatientId(patientId));

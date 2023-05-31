@@ -1,13 +1,22 @@
 package com.psycho.psychohelp.appointment.domain.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.psycho.psychohelp.patient.domain.model.entity.Patient;
 import com.psycho.psychohelp.psychologist.domain.model.entity.Psychologist;
 import com.psycho.psychohelp.shared.domain.model.AuditModel;
-import lombok.*;
-
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.With;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.FetchType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,9 +27,10 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @With
 @Entity
-@Table(name ="appointments")
+@Table(name = "appointments")
 public class Appointment extends AuditModel {
 
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,25 +43,25 @@ public class Appointment extends AuditModel {
     @NotNull
     @NotBlank
     @Size(max = 200)
-    private String Motive;
+    private String motive;
 
     @NotNull
     @NotBlank
     @Size(max = 200)
-    private String PersonalHistory;
+    private String personalHistory;
 
     @NotNull
     @NotBlank
     @Size(max = 200)
-    private String TestRealized;
+    private String testRealized;
 
     @NotNull
     @NotBlank
     @Size(max = 200)
-    private String Treatment;
+    private String treatment;
 
     @NotNull
-    private String ScheduleDate;
+    private String scheduleDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)
