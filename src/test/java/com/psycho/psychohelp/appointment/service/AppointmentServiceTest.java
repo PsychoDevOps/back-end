@@ -4,8 +4,6 @@ import com.psycho.psychohelp.appointment.domain.model.entity.Appointment;
 import com.psycho.psychohelp.appointment.domain.persistance.AppointmentRepository;
 import com.psycho.psychohelp.patient.domain.model.entity.Patient;
 import com.psycho.psychohelp.psychologist.domain.model.entity.Psychologist;
-import com.psycho.psychohelp.psychologist.domain.persistence.PsychologistRepository;
-import com.psycho.psychohelp.psychologist.domain.service.PsychologistService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,8 +12,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.junit.Assert;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,11 +24,8 @@ public class AppointmentServiceTest {
     private AppointmentServiceImpl appointmentService;
     @Mock
     private AppointmentRepository appointmentRepository;
-    @Mock
-    private PsychologistRepository psychologistRepository;
-    @Mock
-    private PsychologistService psychologistService;
 
+    private final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");;
 
     @Test
     @DisplayName("Test for search by ID")
@@ -60,16 +56,16 @@ public class AppointmentServiceTest {
 
         Appointment result = appointmentService.getById(appointmentId);
 
-        Assert.assertEquals(appointment, result);
-        Assert.assertEquals(patient, result.getPatient());
-        Assert.assertEquals(psychologist, result.getPsychologist());
+        Assertions.assertEquals(appointment, result);
+        Assertions.assertEquals(patient, result.getPatient());
+        Assertions.assertEquals(psychologist, result.getPsychologist());
 
         Mockito.verify(appointmentRepository, Mockito.times(1)).findById(appointmentId);
     }
     @Test
     @DisplayName("Test for search a Psychologist by id")
-    public void testSearchPsychologistById() {
-        Psychologist psychologist = new Psychologist(1L, "John Doe", "12345", "1980/01/01", "john.doe@mail.com", "password",
+    public void testSearchPsychologistById() throws ParseException {
+        Psychologist psychologist = new Psychologist(1L, "John Doe", "12345", format.parse("1980-01-01"), "john.doe@mail.com", "password",
                 "123456789", "Specialization", "Formation", "About me", "male", "session type", "img.jpg", "CMP12345", true, true);
         Appointment appointment = new Appointment(1L, "www.meet.com/HtzJja", "Peace", "Treatment", "Psychologist", "Weekly",
                 "12/05/2023", new Patient(1L, "Juan", "Normal", "user@gmail.com", "123456", "android", "01/01", "Male", "photo"),
@@ -82,10 +78,10 @@ public class AppointmentServiceTest {
     }
     @Test
     @DisplayName("Test for search a Patient")
-    public void testSearchPatient() {
+    public void testSearchPatient() throws ParseException {
         Patient expectedPatient = new Patient(1L, "Juan", "Normal", "user@gmail.com", "123456", "android", "01/01", "Masculino", "photo");
         List<Appointment> appointments = new ArrayList<>();
-        appointments.add(new Appointment(1L, "www.meet.com/HtzJja", "Peace", "Treatment", "Psychologist", "Weekly", "12/05/2023", expectedPatient, new Psychologist(1L, "Jorge", "12345", "1980/12/05", "jorgel@mail.com", "password", "984561278", "especializacion", "formacion", "about", "masculino", "sesiontype", "img.jpg", "cmp", true, true)));
+        appointments.add(new Appointment(1L, "www.meet.com/HtzJja", "Peace", "Treatment", "Psychologist", "Weekly", "12/05/2023", expectedPatient, new Psychologist(1L, "Jorge", "12345", format.parse("1980-12-05"), "jorgel@mail.com", "password", "984561278", "especializacion", "formacion", "about", "masculino", "sesiontype", "img.jpg", "cmp", true, true)));
         Mockito.when(appointmentRepository.findByPatientId(1L)).thenReturn(appointments);
         List<Appointment> resultAppointments = appointmentService.getByPatientId(1L);
         Assertions.assertEquals(expectedPatient, resultAppointments.get(0).getPatient());
@@ -93,9 +89,9 @@ public class AppointmentServiceTest {
     }
     @Test
     @DisplayName("Test for search a Patient and Psychologist")
-    public void testSearchPatientAndPsychologist() {
+    public void testSearchPatientAndPsychologist() throws ParseException {
         Patient patient = new Patient(1L, "Juan", "Normal", "user@gmail.com","123456","android","01/01","Masculino","photo");
-        Psychologist psychologist = new Psychologist(1L, "Jorge",  "12345","1980/12/05","jorgel@mail.com","password", "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true);
+        Psychologist psychologist = new Psychologist(1L, "Jorge",  "12345", format.parse("1980-12-05"),"jorgel@mail.com","password", "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true);
         Appointment appointment = new Appointment(1L, "www.meet.com/HtzJja", "Peace", "Treatment", "Psychologist", "Weekly", "12/05/2023", patient, psychologist);
 
         List<Appointment> appointments = Collections.singletonList(appointment);

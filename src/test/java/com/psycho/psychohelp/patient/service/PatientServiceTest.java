@@ -2,9 +2,6 @@ package com.psycho.psychohelp.patient.service;
 
 import com.psycho.psychohelp.patient.domain.model.entity.Patient;
 import com.psycho.psychohelp.patient.domain.persistence.PatientRepository;
-import com.psycho.psychohelp.patient.domain.service.PatientService;
-import com.psycho.psychohelp.patient.service.PatientServiceImpl;
-import org.apache.catalina.connector.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,9 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.stubbing.Answer;
-import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
