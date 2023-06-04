@@ -1,24 +1,32 @@
 package com.psycho.psychohelp.psychologist.domain.model.entity;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
+/**
+ *
+ * <p>Model class for psychologist schedule.</p>
+ *
+ */
 @Entity
-@Table(name="psychologist_schedule")
+@Table(name = "psychologist_schedule")
 @NoArgsConstructor
 @AllArgsConstructor
 public class PsychologistSchedule {
 
-    @EmbeddedId
-    private PsychologistScheduleFK psychologistScheduleFK;
+  @EmbeddedId
+  private PsychologistScheduleFk psychologistScheduleFk;
 
-    @ManyToOne
-    @MapsId("psychologistId")
-    private Psychologist psychologist;
+  @ManyToOne
+  @MapsId("psychologistId")
+  private Psychologist psychologist;
 
-    @ManyToOne
-    @MapsId("scheduleId")
-    private Schedule schedule;
+  @ManyToOne
+  @MapsId("scheduleId")
+  private Schedule schedule;
 }

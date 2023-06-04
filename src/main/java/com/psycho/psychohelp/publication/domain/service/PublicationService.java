@@ -1,19 +1,24 @@
 package com.psycho.psychohelp.publication.domain.service;
 
 import com.psycho.psychohelp.publication.domain.model.entity.Publication;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
-import java.util.Optional;
-
+/**
+ *
+ * <p>Service interface for publication.</p>
+ *
+ */
 public interface PublicationService {
-    List<Publication>getAll();
-    //Page<Publication> getAll(Pageable pageable);
-    Publication getById(Long publicationId);
-    Publication create(Publication publication, Long psychologistId);
-    Publication update(Long publicationId, Publication request);
-    ResponseEntity<?> delete(Long publicationId);
-    List<Publication> getByPsychologistId(Long psychologistId);
+  List<Publication> getAll();
+
+  Publication getById(Long publicationId);
+
+  Publication create(Publication publication, Long psychologistId);
+
+  Publication update(Long publicationId, Publication request);
+
+  ResponseEntity<?> delete(Long publicationId);
+
+  List<Publication> getByPsychologistId(Long psychologistId);
 }

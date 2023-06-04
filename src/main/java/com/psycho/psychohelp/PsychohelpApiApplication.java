@@ -8,23 +8,33 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ *
+ * <p>Psychohelp api application class.</p>
+ *
+ */
 @OpenAPIDefinition
 @SpringBootApplication
 @EnableJpaAuditing
 public class PsychohelpApiApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PsychohelpApiApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(PsychohelpApiApplication.class, args);
+  }
 
-   @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("https://psychohelp-488a9.web.app").allowedMethods("*").allowedHeaders("*");
-            }
-             };
-    }
+  /**
+   *
+   * <p>Cors configuration method.</p>
+   *
+   */
+  @Bean
+  public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+      @Override
+      public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedOrigins("https://psychohelp-488a9.web.app").allowedMethods("*").allowedHeaders("*");
+      }
+    };
+  }
 
 }
