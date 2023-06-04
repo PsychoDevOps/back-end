@@ -4,14 +4,19 @@ import com.psycho.psychohelp.psychologist.resource.PsychologistResource;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ *
+ * <p>Resource class for publication.</p>
+ *
+ */
 @Getter
 @Setter
 public class PublicationResource {
-    private Long id;
-    private String title;
-    private String tags;
-    private String description;
-    private String photoUrl;
-    private String content;
-    private PsychologistResource psychologist;
+  private Long id;
+  private String title;
+  private String tags;
+  private String description;
+  private String photoUrl;
+  private String content;
+  private PsychologistResource psychologist;
 }
