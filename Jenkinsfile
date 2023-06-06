@@ -24,6 +24,15 @@ pipeline {
             }
         }
 
+        stage ('sonarQube Analysis') {
+        		
+        	steps {
+        		withSonarQubeEnv('sonarLocal') {
+       				sh 'mvn clean verify admin:psychohelp -Dsonar.projectKey=psychohelp'
+       			}
+       		}
+        }
+
         stage ('Package Stage') {
             steps {
                 withMaven(maven : 'MAVEN_3_9_1') {
