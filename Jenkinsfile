@@ -25,10 +25,13 @@ pipeline {
         }
 
         stage ('sonarQube Analysis') {
-        		
+
         	steps {
         		withSonarQubeEnv('sonarLocal') {
-       				sh 'mvn clean verify admin:psychohelp -Dsonar.projectKey=psychohelp'
+       				sh 'mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=psychohelp \
+                          -Dsonar.host.url=http://20.55.113.23:9000 \
+                          -Dsonar.login=sqp_e6855024f11c2f45fd4481b7988d26ba4242c9df'
        			}
        		}
         }
