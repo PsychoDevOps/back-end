@@ -40,7 +40,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Psychologist")
 @RestController
 @RequestMapping("/api/v1/psychologists")
-@CrossOrigin
 public class PsychologistController {
 
   @Autowired
