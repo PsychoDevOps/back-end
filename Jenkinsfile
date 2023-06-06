@@ -46,7 +46,7 @@ pipeline {
 
         stage ('Deploy Tomcat') {
             steps {
-                sh 'curl -T "./target/psychohelp-api-0.0.1-SNAPSHOT.war" "http://psychohelp:psychohelp@localhost:9090/manager/text/deploy?path=/psychohelp&update=true"'
+                sh 'curl -T "./target/psychohelp-api-0.0.1-SNAPSHOT.war" "http://psychohelp:psychohelp@localhost:8081/manager/text/deploy?path=/psychohelp&update=true"'
             }
         }
 
