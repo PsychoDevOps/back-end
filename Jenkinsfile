@@ -27,7 +27,7 @@ pipeline {
         stage ('sonarQube Analysis') {
 
         	steps {
-        		withSonarQubeEnv('sonarLocal') {
+        		withMaven(maven : 'MAVEN_3_9_1') {
        				sh 'mvn clean verify sonar:sonar \
                           -Dsonar.projectKey=psychohelp \
                           -Dsonar.host.url=http://20.55.113.23:9000 \
