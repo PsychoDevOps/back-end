@@ -33,7 +33,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Appointment")
 @RestController
 @RequestMapping("/api/v1/appointment")
-@CrossOrigin
 public class AppointmentController {
 
   @Autowired

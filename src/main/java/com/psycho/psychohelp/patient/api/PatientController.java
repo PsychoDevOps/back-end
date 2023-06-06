@@ -30,7 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Patient")
 @RestController
 @RequestMapping("/api/v1/patients")
-@CrossOrigin
 public class PatientController {
 
   @Autowired

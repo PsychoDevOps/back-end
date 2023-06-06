@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Schedule")
 @RestController
 @RequestMapping("/api/v1/schedules")
-@CrossOrigin
 public class ScheduleController {
 
   @Autowired

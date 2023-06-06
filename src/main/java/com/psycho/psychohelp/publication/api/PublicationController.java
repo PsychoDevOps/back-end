@@ -31,7 +31,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Publication")
 @RestController
 @RequestMapping("/api/v1/publications")
-@CrossOrigin
 public class PublicationController {
 
   @Autowired
