@@ -20,4 +20,5 @@ public class PatientResource {
   private String date;
   private String gender;
   private String img;
+  private Boolean panic;
 }

@@ -71,13 +71,17 @@ public class Patient extends AuditModel {
   @Size(max = 200)
   private String img;
 
+
+  private Boolean panic = false;
+
   /**
    *
    * <p>Method constructor for patient model class.</p>
    *
    */
   public Patient(Long id, String firstName, String lastName, String email,
-                 String password, String phone, String date, String gender, String img) {
+                 String password, String phone, String date, String gender, String img
+                 , Boolean panic) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -87,5 +91,6 @@ public class Patient extends AuditModel {
     this.date = date;
     this.gender = gender;
     this.img = img;
+    this.panic = panic;
   }
 }

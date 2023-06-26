@@ -65,6 +65,19 @@ public class PatientServiceImpl implements PatientService {
   }
 
   @Override
+  public List<Patient> getPanicPatients() {
+    return patientRepository.findByPanic(true);
+  }
+
+  @Override
+  public Patient activatePanic(Long patientId, Patient request) {
+    return patientRepository.findById(patientId).map(patient ->
+                    patientRepository.save(
+                            patient.withPanic(request.getPanic())))
+            .orElseThrow(() -> new ResourceNotFoundException(ENTITY, patientId));
+  }
+
+  @Override
   public Patient getByEmail(String email) {
     return patientRepository.findByEmail(email);
   }
