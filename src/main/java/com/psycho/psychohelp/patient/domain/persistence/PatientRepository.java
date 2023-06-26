@@ -19,5 +19,5 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
           + " appointments where psychologist_id = ?1)", nativeQuery = true)
   List<Patient> findPatientsByPsychologistId(Long psychologistId);
 
-
+  List<Patient> findByPanic(Boolean panic);
 }
