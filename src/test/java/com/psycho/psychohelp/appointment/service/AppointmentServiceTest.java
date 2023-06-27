@@ -68,7 +68,7 @@ public class AppointmentServiceTest {
         Psychologist psychologist = new Psychologist(1L, "John Doe", "12345", format.parse("1980-01-01"), "john.doe@mail.com", "password",
                 "123456789", "Specialization", "Formation", "About me", "male", "session type", "img.jpg", "CMP12345", true, true);
         Appointment appointment = new Appointment(1L, "www.meet.com/HtzJja", "Peace", "Treatment", "Psychologist", "Weekly",
-                "12/05/2023", new Patient(1L, "Juan", "Normal", "user@gmail.com", "123456", "android", "01/01", "Male", "photo"),
+                "12/05/2023", new Patient(1L, "Juan", "Normal", "user@gmail.com", "123456", "android", "01/01", "Male", "photo", true),
                 psychologist);
 
         Mockito.when(appointmentRepository.findByPsychologistId(1L)).thenReturn(Collections.singletonList(appointment));
@@ -79,7 +79,7 @@ public class AppointmentServiceTest {
     @Test
     @DisplayName("Test for search a Patient")
     public void testSearchPatient() throws ParseException {
-        Patient expectedPatient = new Patient(1L, "Juan", "Normal", "user@gmail.com", "123456", "android", "01/01", "Masculino", "photo");
+        Patient expectedPatient = new Patient(1L, "Juan", "Normal", "user@gmail.com", "123456", "android", "01/01", "Masculino", "photo", true);
         List<Appointment> appointments = new ArrayList<>();
         appointments.add(new Appointment(1L, "www.meet.com/HtzJja", "Peace", "Treatment", "Psychologist", "Weekly", "12/05/2023", expectedPatient, new Psychologist(1L, "Jorge", "12345", format.parse("1980-12-05"), "jorgel@mail.com", "password", "984561278", "especializacion", "formacion", "about", "masculino", "sesiontype", "img.jpg", "cmp", true, true)));
         Mockito.when(appointmentRepository.findByPatientId(1L)).thenReturn(appointments);
@@ -90,7 +90,7 @@ public class AppointmentServiceTest {
     @Test
     @DisplayName("Test for search a Patient and Psychologist")
     public void testSearchPatientAndPsychologist() throws ParseException {
-        Patient patient = new Patient(1L, "Juan", "Normal", "user@gmail.com","123456","android","01/01","Masculino","photo");
+        Patient patient = new Patient(1L, "Juan", "Normal", "user@gmail.com","123456","android","01/01","Masculino","photo", true);
         Psychologist psychologist = new Psychologist(1L, "Jorge",  "12345", format.parse("1980-12-05"),"jorgel@mail.com","password", "984561278","especializacion","formacion","about", "masculino","sesiontype", "img.jpg","cmp",true,true);
         Appointment appointment = new Appointment(1L, "www.meet.com/HtzJja", "Peace", "Treatment", "Psychologist", "Weekly", "12/05/2023", patient, psychologist);
 
