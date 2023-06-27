@@ -2,6 +2,7 @@ package com.psycho.psychohelp.patient.mapping;
 
 import com.psycho.psychohelp.patient.domain.model.entity.Patient;
 import com.psycho.psychohelp.patient.resource.CreatePatientResource;
+import com.psycho.psychohelp.patient.resource.PatchPanicResource;
 import com.psycho.psychohelp.patient.resource.PatientResource;
 import com.psycho.psychohelp.patient.resource.UpdatePatientResource;
 import com.psycho.psychohelp.shared.mapping.EnhancedModelMapper;
@@ -52,4 +53,6 @@ public class PatientMapper {
   public Patient toModel(UpdatePatientResource resource) {
     return mapper.map(resource, Patient.class);
   }
+
+  public Patient toModel(PatchPanicResource resource) { return mapper.map(resource, Patient.class); }
 }

@@ -3,6 +3,7 @@ package com.psycho.psychohelp.patient.api;
 import com.psycho.psychohelp.patient.domain.service.PatientService;
 import com.psycho.psychohelp.patient.mapping.PatientMapper;
 import com.psycho.psychohelp.patient.resource.CreatePatientResource;
+import com.psycho.psychohelp.patient.resource.PatchPanicResource;
 import com.psycho.psychohelp.patient.resource.PatientResource;
 import com.psycho.psychohelp.patient.resource.UpdatePatientResource;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -73,6 +75,19 @@ public class PatientController {
   public PatientResource updatePatient(@PathVariable Long patientId,
                                        @RequestBody UpdatePatientResource request) {
     return mapper.toResource(patientService.update(patientId, mapper.toModel(request)));
+  }
+
+  @Operation(summary = "Activate panic patient", description = "Activate panic Patient by Id")
+  @PatchMapping("panic/{patientId}")
+  public PatientResource activatePanicPatient(@PathVariable Long patientId,
+                                              @RequestBody PatchPanicResource request) {
+    return mapper.toResource(patientService.activatePanic(patientId, mapper.toModel(request)));
+  }
+
+  @Operation(summary = "Get all panic patient", description = "Get all panic patients")
+  @GetMapping("panic")
+  public List<PatientResource> getPanicPatients() {
+    return mapper.toResource(patientService.getPanicPatients());
   }
 
   @Operation(summary = "Delete patient", description = "Delete Patient by Id")

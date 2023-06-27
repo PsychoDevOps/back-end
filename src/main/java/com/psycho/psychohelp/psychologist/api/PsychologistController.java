@@ -136,7 +136,7 @@ public class PsychologistController {
 
   /**
    *
-     * <p>Post method for create a schedule by a psychologist.</p>
+   * <p>Post method for create a schedule by a psychologist.</p>
    *
    */
   @Operation(summary = "Create schedule", description = "Create schedule")

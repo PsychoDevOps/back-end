@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 public interface PatientService {
   List<Patient> getAll();
 
+  List<Patient> getPanicPatients();
+
   Page<Patient> getAll(Pageable pageable);
 
   Patient getById(Long patientId);
@@ -25,4 +27,6 @@ public interface PatientService {
   Patient getByEmail(String email);
 
   ResponseEntity<?> delete(Long logbookId);
+
+  Patient activatePanic(Long patientId, Patient request);
 }
